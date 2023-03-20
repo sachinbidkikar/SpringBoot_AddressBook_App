@@ -1,0 +1,11 @@
+{
+"id":1,
+"name":"Sachin",
+"phoneNumber":"918123456789",
+"gender":"male",
+"email":"mail@gmail.com",
+"address":"House No, Area",
+"city":"Pune",
+"state":"karnataka",
+"pincode":"123456"
+}
