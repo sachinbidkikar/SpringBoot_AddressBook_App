@@ -1,17 +1,9 @@
 package com.springboot.address_Book_Backend.dto;
-
-import jakarta.persistence.CollectionTable;
-import jakarta.persistence.ElementCollection;
-import jakarta.persistence.JoinColumn;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Pattern;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import org.hibernate.validator.constraints.Length;
-import org.w3c.dom.stylesheets.LinkStyle;
-
-import java.util.List;
 
 @Data
 @NoArgsConstructor

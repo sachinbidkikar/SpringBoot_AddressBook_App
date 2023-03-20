@@ -13,6 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
+
 @RequestMapping("/app")
 public class AddressBookController {
     @Autowired(required = true)
@@ -23,6 +24,7 @@ public class AddressBookController {
     public ResponseEntity<ResponseDTO> getAll(){
         List<AddressBook> addressBookList = addressBookService.showDetails();
         ResponseDTO responseDTO = new ResponseDTO("Details Found",addressBookList);
+
     return new ResponseEntity<>(responseDTO, HttpStatus.OK);
     }
 
