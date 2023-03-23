@@ -23,7 +23,6 @@ public class AddressBookDTO {
     @NotBlank(message = "Address cannot be empty")
     private String address;
 
-
     @NotBlank(message = "City cannot be empty")
     private String city;
 

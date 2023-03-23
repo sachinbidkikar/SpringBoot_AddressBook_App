@@ -4,6 +4,7 @@ import com.springboot.address_Book_Backend.dto.AddressBookDTO;
 import com.springboot.address_Book_Backend.entity.AddressBook;
 import com.springboot.address_Book_Backend.exception.AddressBookException;
 import com.springboot.address_Book_Backend.repository.AddressBookRepository;
+import com.springboot.address_Book_Backend.utility.EmailSenderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,6 +17,8 @@ public class AddressBookService implements IAddressBookService {
     @Autowired
     AddressBookRepository addressBookRepository;
 
+    @Autowired
+    private EmailSenderService emailSenderService;
 
     public List<AddressBook> showDetails(){
         List<AddressBook> addressBook = addressBookRepository.findAll();
@@ -32,7 +35,9 @@ public class AddressBookService implements IAddressBookService {
 
     public AddressBook postData(AddressBookDTO addressBookDTO){
     AddressBook addressBook = new AddressBook(addressBookDTO);
-    return addressBookRepository.save(addressBook);
+     addressBookRepository.save(addressBook);
+     emailSenderService.sendMail(addressBook.getEmail(),"Registered in Address Book",addressBook.getId() + "\n" + addressBook.getEmail());
+     return addressBook;
     }
 
     public AddressBook updateData(AddressBookDTO addressBookDTO, long id){
@@ -47,6 +52,7 @@ public class AddressBookService implements IAddressBookService {
             addressBook.setEmail(addressBookDTO.getEmail());
             addressBook.setPhoneNumber(addressBook.getPhoneNumber());
             addressBookRepository.save(addressBook);
+            emailSenderService.sendMail(addressBook.getEmail(),"Employee Details has been Updated for " +addressBook.getId(),"Employee Details has been Updated for " +addressBook.getId() );
             return addressBook;
 
         }
